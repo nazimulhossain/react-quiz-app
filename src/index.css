@@ -18,6 +18,7 @@ body {
   display: grid;
   place-items: center;
   padding: 6.4rem;
+  background-color: #dee2e6;
 }
 
 code {
@@ -26,21 +27,79 @@ code {
 }
 
 .quiz {
-  margin: 6.4rem;
+  margin: 3.2rem 0;
+  text-align: center;
+  width: 65rem;
 }
 
 progress {
   -webkit-appearance: none;
   appearance: none;
+  width: 100%;
+  margin-bottom: 2.4rem;
 }
 
 ::-webkit-progress-inner-element {
   border: 2px solid black;
   height: 2.4rem;
+  
 }
 ::-webkit-progress-bar {
   background-color: orange;
+  
 }
 ::-webkit-progress-value {
   background-color: red;
+  
+}
+
+.header-secondary {
+  font-size: 4.4rem;
+  letter-spacing: 1px;
+  margin-bottom: 2.4rem;
+}
+
+.description {
+  font-size: 2.8rem;
+  margin-bottom: 2.4rem;
+  
+}
+
+.center {
+  text-align: center;
+}
+
+.btn {
+  all: unset;
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 600;
+  background-color: #adb5bd;
+  padding: 1.2rem 3.2rem;
+  border-radius: 100rem;
+  text-align: center;
+  margin-top: 2.4rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:not[disabled]:hover {
+  background-color: #495057;
+  color: #fff;
+  border: 2px solid #adb5bd;
+  
+}
+
+.btn:not[disabled]:active {
+  transform: translateY(2px);
+
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+}
+
+.option-container {
+  display: flex;
+  flex-direction: column;
 }

@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Quiz Application built using React useReducer Hook
+
+This project is under development.
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
