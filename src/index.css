@@ -1,3 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +15,32 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: grid;
+  place-items: center;
+  padding: 6.4rem;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.quiz {
+  margin: 6.4rem;
+}
+
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+::-webkit-progress-inner-element {
+  border: 2px solid black;
+  height: 2.4rem;
+}
+::-webkit-progress-bar {
+  background-color: orange;
+}
+::-webkit-progress-value {
+  background-color: red;
 }
