@@ -1,4 +1,4 @@
-import Button from "./Button";
+
 
 function StartScreen({dispatch}){
     return (

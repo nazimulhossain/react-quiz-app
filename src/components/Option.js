@@ -1,6 +1,6 @@
 function Option({dispatch,answer,question}){
 
-    console.log(answer)
+
     return (
         <div className="option-container">
             {

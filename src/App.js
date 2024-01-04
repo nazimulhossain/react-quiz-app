@@ -7,12 +7,16 @@ import questionData from './data/question.json';
 import Question from './components/Question';
 import FinishScreen from './components/FinishScreen';
 
+
+const SECS_PER_QUESTION = 60;
+
 const initialState = {
   status: 'ready',
   question : [],
   index: 0,
   points:0,
-  answer :false
+  answer :false,
+  secondsRemaining: 0
 }
 
 const reducer = (state,action)=>{
@@ -20,11 +24,14 @@ const reducer = (state,action)=>{
   switch(action.type) {
     case 'start' : 
       const {questions} = questionData;
+
+      
    
        return {
       ...state,
       status:'active',
-      question: questions
+      question: questions,
+      secondsRemaining: questions.length * SECS_PER_QUESTION
       } 
 
     case 'newAnswer':
@@ -43,6 +50,14 @@ const reducer = (state,action)=>{
         index: state.index + 1,
         answer: false
       }
+
+      case 'timer' :
+        return {
+        ...state,
+        secondsRemaining : state.secondsRemaining - 1,
+        status : state.secondsRemaining === 0 ? 'finish' : state.status
+
+      }
      
       case 'finish' : 
 
@@ -57,6 +72,8 @@ const reducer = (state,action)=>{
           question: state.question
         } 
 
+
+
     default: 
        throw new Error('Action Invalid');     
       
@@ -67,9 +84,11 @@ const reducer = (state,action)=>{
 export default function App() {
 
 
-  const[{status,question,index, answer,points},dispatch]= useReducer(reducer,initialState);
+  const[{status,question,index, answer,points,secondsRemaining},dispatch]= useReducer(reducer,initialState);
 
   const maxQuestion = question.length;
+
+ 
 
   const totalPoints = question.reduce((acc,cur)=>{
     return cur.points + acc;
@@ -83,7 +102,7 @@ export default function App() {
       <Header />
       <Main>
         {status==='ready' && <StartScreen dispatch={dispatch} />}
-        {status==='active' && <Question question={question[index]} maxQuestion={maxQuestion} index={index} dispatch={dispatch} answer={answer} points={points} totalPoints={totalPoints} />}
+        {status==='active' && <Question question={question[index]} maxQuestion={maxQuestion} index={index} dispatch={dispatch} answer={answer} points={points} totalPoints={totalPoints} secondsRemaining={secondsRemaining} />}
         {status==='finish' && <FinishScreen points={points} totalPoints={totalPoints} dispatch={dispatch} />}
       </Main>
     </>
